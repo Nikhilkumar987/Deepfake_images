@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,27 +24,21 @@ const Navbar = () => {
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center px-6">
         {/* Logo */}
-        <h1 className="text-xl md:text-2xl font-bold text-white cursor-pointer hover:text-purple-400">
+        <Link to="/" className="text-xl md:text-2xl font-bold text-white hover:text-purple-400">
           MyApp
-        </h1>
+        </Link>
 
         {/* Links */}
         <div className="hidden md:flex space-x-6">
-          <a href="#" className="text-white hover:text-purple-400 transition">
+          <NavLink to="/" className={({ isActive }) => `transition ${isActive ? 'text-purple-400' : 'text-white hover:text-purple-400'}`}>
             Home
-          </a>
-          <a href="#" className="text-white hover:text-purple-400 transition">
-            Docs
-          </a>
-          <a href="#" className="text-white hover:text-purple-400 transition">
+          </NavLink>
+          <a href="#" className="text-white/70 cursor-not-allowed">Docs</a>
+          <NavLink to="/deepfake" className={({ isActive }) => `transition ${isActive ? 'text-purple-400' : 'text-white hover:text-purple-400'}`}>
             Deepfake AI
-          </a>
-          <a href="#" className="text-white hover:text-purple-400 transition">
-            Fake News AI
-          </a>
-          <a href="#" className="text-white hover:text-purple-400 transition">
-            Contact Us
-          </a>
+          </NavLink>
+          <a href="#" className="text-white/70 cursor-not-allowed">Fake News AI</a>
+          <a href="#" className="text-white/70 cursor-not-allowed">Contact Us</a>
         </div>
 
         {/* Mobile Menu */}
